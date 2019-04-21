@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Web Components</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 2rem;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <sb3-modal>
+      <h1 slot="title">Custom Title</h1>
+      <p>
+        With your confirmation , you agree to pay the full amount
+      </p>
+    </sb3-modal>
+    <p>Please confirm your choice</p>
+    <button>Show Details & Confirm</button>
+    <script src="modal.js"></script>
+    <script>
+      const confirmButton = document.querySelector("button");
+      const modal = document.querySelector("sb3-modal");
+      confirmButton.addEventListener("click", () => {
+        //modal.setAttribute("opened", "");
+        if (!modal.isOpen) {
+          modal.open();
+        }
+      });
+    </script>
+  </body>
+</html>
