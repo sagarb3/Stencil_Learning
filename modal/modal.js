@@ -86,8 +86,9 @@ class Modal extends HTMLElement {
 
   disconnectedCallback() {}
 
-  _showModal() {}
-  _hideModal() {}
+  hide() {}
+  show() {}
+
   _render() {}
   attributeChangedCallback(name, oldValue, newValue) {
     if (this.hasAttribute("opened")) {
@@ -101,6 +102,17 @@ class Modal extends HTMLElement {
   }
   open() {
     this.setAttribute("opened", "");
+  }
+  hide() {
+    if (this.hasAttribute("opened")) {
+      this.removeAttribute("opened");
+    }
+  }
+  _confirm() {
+    this.hide();
+  }
+  _cancel() {
+    this.hide();
   }
 }
 

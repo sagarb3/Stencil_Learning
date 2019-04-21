@@ -41,6 +41,8 @@
     <script>
       const confirmButton = document.querySelector("button");
       const modal = document.querySelector("sb3-modal");
+      modal.addEventListener("confirm", () => {});
+      modal.addEventListener("cancel", () => {});
       confirmButton.addEventListener("click", () => {
         //modal.setAttribute("opened", "");
         if (!modal.isOpen) {
