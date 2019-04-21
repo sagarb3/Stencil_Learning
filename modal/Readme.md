@@ -32,3 +32,18 @@
   **Refer code for sample**
 
 ## Custom Events on Web-Component
+
+- Two ways to emit event from the web-component to main dom:
+  a) bubble the event from the web-component to parent-component
+
+        ```javascript
+             const cancelEvent = new Event("cancel",{bubbles:true,composed:true});
+            event.target.dispatchEvent(cancelEvent);```
+
+  b) dispatch event on the web-component
+
+         ```javascript
+             const cancelEvent = new Event("cancel");
+             this.dispatchEvent(cancelEvent);```
+
+- slotchange eventListener to observe change in the change of slot content from the parent element.
