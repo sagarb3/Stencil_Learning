@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Web Components</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="tooltip.js"></script>
+    <script src="confirm-link.js"></script>
+    <style>
+      /* .highlight {
+        color: orange;
+      } */
+      html {
+        --color-primary: lightblue;
+      }
+
+      sb3-tooltip {
+        border: 1px solid blue;
+        padding: 0.15rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>
+      <sb3-tooltip text="web"
+        ><span class="highlight">Web Components</span></sb3-tooltip
+      >
+      are amazing
+    </p>
+    <!-- <sb3-tooltip class="important">Default</sb3-tooltip> example
+    <br /> -->
+    <sb3-tooltip></sb3-tooltip> example
+    <br />
+    <a is="sb3-confirm-link" href="http://www.google.com">Google</a>
+  </body>
+</html>
