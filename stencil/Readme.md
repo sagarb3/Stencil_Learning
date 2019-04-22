@@ -28,7 +28,7 @@ Stencil JS is used for designing the web-components in a more robust manner. Ste
 
 - In General Styling of the slot is limited to the parent-element from the web-component , so for better style of slotted element , it is best to use the light dom.
 
-## Decoratos in Stencil
+## Decorators in Stencil
 
 - Prop : For exposing a property to be set from outside , optionally with mutable true can be updated from inside, but by default not allowed
 
