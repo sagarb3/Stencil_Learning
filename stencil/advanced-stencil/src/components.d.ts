@@ -12,6 +12,14 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface Sb3Spinner {}
+  interface Sb3SpinnerAttributes extends StencilHTMLAttributes {}
+
+  interface Sb3StockFinder {}
+  interface Sb3StockFinderAttributes extends StencilHTMLAttributes {
+    'onSb3SymbolSelected'?: (event: CustomEvent<string>) => void;
+  }
+
   interface Sb3StockPrice {
     'stockSymbol': string;
   }
@@ -22,13 +30,29 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'Sb3Spinner': Components.Sb3Spinner;
+    'Sb3StockFinder': Components.Sb3StockFinder;
     'Sb3StockPrice': Components.Sb3StockPrice;
   }
 
   interface StencilIntrinsicElements {
+    'sb3-spinner': Components.Sb3SpinnerAttributes;
+    'sb3-stock-finder': Components.Sb3StockFinderAttributes;
     'sb3-stock-price': Components.Sb3StockPriceAttributes;
   }
 
+
+  interface HTMLSb3SpinnerElement extends Components.Sb3Spinner, HTMLStencilElement {}
+  var HTMLSb3SpinnerElement: {
+    prototype: HTMLSb3SpinnerElement;
+    new (): HTMLSb3SpinnerElement;
+  };
+
+  interface HTMLSb3StockFinderElement extends Components.Sb3StockFinder, HTMLStencilElement {}
+  var HTMLSb3StockFinderElement: {
+    prototype: HTMLSb3StockFinderElement;
+    new (): HTMLSb3StockFinderElement;
+  };
 
   interface HTMLSb3StockPriceElement extends Components.Sb3StockPrice, HTMLStencilElement {}
   var HTMLSb3StockPriceElement: {
@@ -37,10 +61,14 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'sb3-spinner': HTMLSb3SpinnerElement
+    'sb3-stock-finder': HTMLSb3StockFinderElement
     'sb3-stock-price': HTMLSb3StockPriceElement
   }
 
   interface ElementTagNameMap {
+    'sb3-spinner': HTMLSb3SpinnerElement;
+    'sb3-stock-finder': HTMLSb3StockFinderElement;
     'sb3-stock-price': HTMLSb3StockPriceElement;
   }
 

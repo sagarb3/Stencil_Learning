@@ -1,4 +1,4 @@
-import { Component, State, Element, Prop, Watch } from "@stencil/core";
+import { Component, State, Element, Prop, Watch, Listen } from "@stencil/core";
 import { API_KEY } from "../../global/global";
 @Component({
   tag: "sb3-stock-price",
@@ -14,7 +14,7 @@ export class StockPrice {
   @Element() el: HTMLElement;
   @State() error: string;
   @Prop({ mutable: true, reflectToAttr: true }) stockSymbol: string;
-
+  @State() loading = false;
   @Watch("stockSymbol")
   stockSymobolChanged(newValue, oldValue) {
     if (newValue != oldValue) {
@@ -58,7 +58,17 @@ export class StockPrice {
     }
   }
 
+  @Listen("body:sb3SymbolSelected")
+  onStockSymbolSelected(event: CustomEvent) {
+    if (event.detail && event.detail !== this.stockSymbol) {
+      //this.fetchStockPrice(event.detail);
+      this.stockSymbol = event.detail;
+      this.stockUserInputValid = true;
+    }
+  }
+
   fetchStockPrice(stockSymbol) {
+    this.loading = true;
     fetch(
       `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${API_KEY}`
     )
@@ -70,16 +80,27 @@ export class StockPrice {
       })
       .then(parsedResponse => {
         //console.log(parsedResponse["Global Quote"]["05. price"]);
+        if (!parsedResponse["Global Quote"]) {
+          throw new Error("Invalid Response");
+        }
         if (!parsedResponse["Global Quote"]["05. price"]) {
           throw new Error("Invalid Symbol");
         }
         this.error = null;
         this.fetchPrice = Number(parsedResponse["Global Quote"]["05. price"]);
+        this.loading = false;
       })
       .catch(err => {
         console.log(err);
         this.error = err.message;
+        this.loading = false;
       });
+  }
+  /**special method host-data */
+  hostData() {
+    return {
+      class: this.error ? "error" : ""
+    };
   }
 
   render() {
@@ -90,6 +111,9 @@ export class StockPrice {
       if (this.fetchPrice) {
         dataContent = <p>Price $ {this.fetchPrice}</p>;
       }
+    }
+    if (this.loading) {
+      dataContent = <sb3-spinner />;
     }
 
     return [

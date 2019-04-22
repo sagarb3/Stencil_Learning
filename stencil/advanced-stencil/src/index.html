@@ -11,5 +11,12 @@
   </head>
   <body>
     <sb3-stock-price stock-symbol="AAPL"></sb3-stock-price>
+    <sb3-stock-finder></sb3-stock-finder>
+    <script>
+      const stockFinderEl = document.querySelector("sb3-stock-finder");
+      stockFinderEl.addEventListener("sb3SymbolSelected", event => {
+        console.log(event);
+      });
+    </script>
   </body>
 </html>
