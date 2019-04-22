@@ -37,3 +37,13 @@ Stencil JS is used for designing the web-components in a more robust manner. Ste
 - Method : To make a web-component method public accessible this decorator need to used
 
 - Component : To declare a stencil web-component
+
+## API Key
+
+## Styling Web Components
+
+- By Default Web Components are inline element so we need to apply the proper display property to have the component pick up the correct styles.
+
+## Refering Input
+
+## Two way data-binding
