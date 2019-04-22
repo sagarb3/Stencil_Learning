@@ -12,58 +12,39 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+  interface Sb3SideDrawer {
+    'open': () => void;
+    'opened': boolean;
+    'title': string;
   }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
+  interface Sb3SideDrawerAttributes extends StencilHTMLAttributes {
+    'opened'?: boolean;
+    'title'?: string;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'MyComponent': Components.MyComponent;
+    'Sb3SideDrawer': Components.Sb3SideDrawer;
   }
 
   interface StencilIntrinsicElements {
-    'my-component': Components.MyComponentAttributes;
+    'sb3-side-drawer': Components.Sb3SideDrawerAttributes;
   }
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLSb3SideDrawerElement extends Components.Sb3SideDrawer, HTMLStencilElement {}
+  var HTMLSb3SideDrawerElement: {
+    prototype: HTMLSb3SideDrawerElement;
+    new (): HTMLSb3SideDrawerElement;
   };
 
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement
+    'sb3-side-drawer': HTMLSb3SideDrawerElement
   }
 
   interface ElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'sb3-side-drawer': HTMLSb3SideDrawerElement;
   }
 
 
