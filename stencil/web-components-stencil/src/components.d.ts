@@ -21,15 +21,24 @@ export namespace Components {
     'opened'?: boolean;
     'title'?: string;
   }
+
+  interface Sb3Tooltip {
+    'tooltipContent': string;
+  }
+  interface Sb3TooltipAttributes extends StencilHTMLAttributes {
+    'tooltipContent'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
     'Sb3SideDrawer': Components.Sb3SideDrawer;
+    'Sb3Tooltip': Components.Sb3Tooltip;
   }
 
   interface StencilIntrinsicElements {
     'sb3-side-drawer': Components.Sb3SideDrawerAttributes;
+    'sb3-tooltip': Components.Sb3TooltipAttributes;
   }
 
 
@@ -39,12 +48,20 @@ declare global {
     new (): HTMLSb3SideDrawerElement;
   };
 
+  interface HTMLSb3TooltipElement extends Components.Sb3Tooltip, HTMLStencilElement {}
+  var HTMLSb3TooltipElement: {
+    prototype: HTMLSb3TooltipElement;
+    new (): HTMLSb3TooltipElement;
+  };
+
   interface HTMLElementTagNameMap {
     'sb3-side-drawer': HTMLSb3SideDrawerElement
+    'sb3-tooltip': HTMLSb3TooltipElement
   }
 
   interface ElementTagNameMap {
     'sb3-side-drawer': HTMLSb3SideDrawerElement;
+    'sb3-tooltip': HTMLSb3TooltipElement;
   }
 
 
