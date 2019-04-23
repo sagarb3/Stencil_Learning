@@ -67,7 +67,7 @@ export class StockFinder {
           </li>
         ))}
       </ul>,
-      { content }
+      content
     ];
   }
 }
